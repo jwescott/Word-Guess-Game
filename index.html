@@ -9,24 +9,51 @@
 </head>
 
 <body>
+    <h1>Hangman</h1>
+
+
+
+
+
+
+
     <script>
         document.write("Press any key to get started!")
         var name = prompt("What's your name?");
         console.log("Hello " + name);
 
-        var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-            'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-        ];
+        var words = ["red", "yellow", "purple", "green", "orange", "blue", "pink"];
 
-        var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-        console.log("Computer Guess " + computerChoice)
-
-        var guess = prompt("Guess a letter!");
-        console.log(guess)
-
-        
+        var word = words[Math.floor(Math.random() * words.length)];
+        console.log("Computer Guess " + word)
 
 
+
+
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+        var remainingLetters = word.length;
+
+        while (remainingLetters > 0) {
+
+            alert(answerArray.join(" "));
+
+
+
+
+            var guess = prompt("Guess a letter!");
+            console.log(guess)
+
+
+            for (var j = 0; j < word.length; j++) {
+                if (word[j] === guess) {
+                    answerArray[j] = guess;
+                    remainingLetters--;
+                }
+            }
+        }
     </script>
 
     <!-- 1. Pick a random word.
